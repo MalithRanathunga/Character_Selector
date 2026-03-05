@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<select id="characterSelect"></select>
+
+<br><br>
+
+<img id="characterImage" src="" width="300">
+
+<script>
+// Array of characters
+const characters = ["Garfield", "Odie", "Nermal", "Pooky", "Jon"];
+
+// Get select element
+const selectBox = document.getElementById("characterSelect");
+
+// Fill the selection box
+characters.forEach(function(character){
+    let option = document.createElement("option");
+    option.text = character;
+    option.value = character.toLowerCase();
+    selectBox.add(option);
+});
+
+// When selection changes
+selectBox.addEventListener("change", function(){
+    let selectedCharacter = this.value;
+    document.getElementById("characterImage").src =
+        "images/" + selectedCharacter + ".jpg";
+});
+
+// Set default image
+selectBox.dispatchEvent(new Event("change"));
+
+</script>
+
+</body>
+</html>
